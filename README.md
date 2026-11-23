@@ -75,3 +75,9 @@ Open http://127.0.0.1:8080 and try both scenarios in each demo. The web app runs
 
 - [Durable transaction replay](event_replay/README.md) materializes an append-only event log into SQLite. It checkpoints consumed bytes in the same transaction as ledger updates and handles retries, partial records, and conflicting duplicates.
 - [Cost-sensitive model evaluation](model_evaluation/README.md) selects a score threshold on validation data, then reports precision, recall, and errors on an independent holdout and its segments.
+
+## Live demos
+
+Open **Live demos** on the [portfolio](https://amandeeparora.com/) or go directly to the [Engineering Lab](https://amandeeparora.com/projects/). Pick **Stream replay**, **Reconciliation**, or **Schema compatibility**, then choose a scenario and run it. Use **Back to portfolio** in the lab header to return home.
+
+The [Credit Card Lab](https://amandeeparora.com/projects/card-lab/) includes a terminology chatbot, a searchable glossary with market and category filters, a simple interest estimator, and a card-payment simulator. Try questions like `APR vs cash advance fee`, `MITC`, or `crédito rotativo`. The guide uses curated definitions and selected regional vocabulary, and questions stay in the browser.
