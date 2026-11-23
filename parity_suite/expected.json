@@ -1,0 +1,8 @@
+[
+  {"event_id":"match","internal_count":1,"processor_count":1,"status":"matched"},
+  {"event_id":"amount","internal_count":1,"processor_count":1,"status":"amount_mismatch"},
+  {"event_id":"currency","internal_count":1,"processor_count":1,"status":"currency_mismatch"},
+  {"event_id":"missing_processor","internal_count":1,"processor_count":null,"status":"missing_processor"},
+  {"event_id":"duplicate","internal_count":2,"processor_count":null,"status":"duplicate"},
+  {"event_id":"missing_internal","internal_count":null,"processor_count":1,"status":"missing_internal"}
+]
