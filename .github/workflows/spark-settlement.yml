@@ -1,0 +1,23 @@
+name: Spark settlement regression
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  spark-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: python -m pip install -r spark_settlement/requirements.txt
+      - run: python -m unittest -v parity_suite.test_parity
+      - run: python spark_settlement/verify.py "$RUNNER_TEMP/settlement-actual.json"
+      - run: python -m parity_suite.check parity_suite/expected.json "$RUNNER_TEMP/settlement-actual.json"
