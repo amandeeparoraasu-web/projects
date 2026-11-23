@@ -1,0 +1,10 @@
+[
+  {"days_past_due": 0, "utilization_pct": 0, "expected": "ELIGIBLE"},
+  {"days_past_due": 0, "utilization_pct": 30, "expected": "ELIGIBLE"},
+  {"days_past_due": 0, "utilization_pct": 31, "expected": "UNCHANGED"},
+  {"days_past_due": 0, "utilization_pct": 89, "expected": "UNCHANGED"},
+  {"days_past_due": 0, "utilization_pct": 90, "expected": "HOLD"},
+  {"days_past_due": 0, "utilization_pct": 100, "expected": "HOLD"},
+  {"days_past_due": 1, "utilization_pct": 30, "expected": "REVIEW"},
+  {"days_past_due": 1, "utilization_pct": 90, "expected": "REVIEW"}
+]

@@ -1,0 +1,19 @@
+name: Portfolio checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  demos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest -v
+      - name: Run compiled COBOL against the same fixtures
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gnucobol
+          cobc -x legacy_credit_rule.cob -o /tmp/portfolio-credit-rule
+          python verify_cobol.py /tmp/portfolio-credit-rule
