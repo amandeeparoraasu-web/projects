@@ -70,3 +70,8 @@ Open http://127.0.0.1:8080 and try both scenarios in each demo. The web app runs
 ## Reference service
 
 [Settlement reconciliation service](settlement_service/README.md) provides an HTTP API, persistent SQLite batch reports, idempotent retries, and a Dockerfile.
+
+## Transaction replay and model evaluation
+
+- [Durable transaction replay](event_replay/README.md) materializes an append-only event log into SQLite. It checkpoints consumed bytes in the same transaction as ledger updates and handles retries, partial records, and conflicting duplicates.
+- [Cost-sensitive model evaluation](model_evaluation/README.md) selects a score threshold on validation data, then reports precision, recall, and errors on an independent holdout and its segments.
