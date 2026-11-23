@@ -66,3 +66,7 @@ python3 -m http.server 8080 --bind 127.0.0.1 --directory web
 ```
 
 Open http://127.0.0.1:8080 and try both scenarios in each demo. The web app runs without a backend or any external JavaScript dependencies. Cloudflare Pages can serve the contents of the `web/` directory directly.
+
+## Reference service
+
+[Settlement reconciliation service](settlement_service/README.md) provides an HTTP API, persistent SQLite batch reports, idempotent retries, and a Dockerfile.
