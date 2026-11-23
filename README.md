@@ -40,3 +40,29 @@ Expected decision: `HOLD`. The credit rules are synthetic and intended for softw
 [Professional portfolio](https://amandeeparora.com/)
 
 Run `python3 verify_cobol.py /tmp/portfolio-credit-rule` to check the compiled program against all eight fixtures. The GitHub Actions workflow runs the Python tests and compiles the COBOL example on Ubuntu.
+
+## More projects
+
+### Ledger reconciliation
+
+```sh
+python3 ledger_reconciliation.py internal-ledger.csv settlement-ledger.csv
+```
+
+The example produces two matches, one amount mismatch, and one missing record on each side. A repeated transaction reference stops the run so it cannot silently overwrite another row.
+
+### Schema compatibility
+
+```sh
+python3 schema_contract.py schema-v1.json schema-v2.json
+```
+
+The example adds a field and passes. A removed field or a changed type produces a readable difference and a nonzero exit status, so this checker can be used as a pre-deploy check.
+
+### Engineering Lab
+
+```sh
+python3 -m http.server 8080 --bind 127.0.0.1 --directory web
+```
+
+Open http://127.0.0.1:8080 and try both scenarios in each demo. The web app runs without a backend or any external JavaScript dependencies. Cloudflare Pages can serve the contents of the `web/` directory directly.

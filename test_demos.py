@@ -3,6 +3,8 @@ from pathlib import Path
 
 from credit_rule_parity import verify
 from federated_fraud import run
+from ledger_reconciliation import load_ledger, reconcile
+from schema_contract import breaking_changes
 from transaction_stream import parse_lines, summarize
 
 
@@ -35,6 +37,20 @@ class DemoTests(unittest.TestCase):
             result = run(seed)
             self.assertLess(result["federated_log_loss"], result["baseline_log_loss"])
             self.assertEqual(result, run(seed))
+
+    def test_reconciliation_distinguishes_each_exception(self):
+        left = load_ledger(Path("internal-ledger.csv"))
+        right = load_ledger(Path("settlement-ledger.csv"))
+        self.assertEqual([item["status"] for item in reconcile(left, right)], [
+            "matched", "amount_mismatch", "missing_settlement", "missing_internal", "matched",
+        ])
+
+    def test_schema_contract_allows_additions_and_reports_breaks(self):
+        current = {"id": "string", "cents": "integer", "timestamp": "integer"}
+        self.assertEqual(breaking_changes(current, current | {"currency": "string"}), [])
+        self.assertEqual(breaking_changes(current, {"id": "string", "cents": "string"}), [
+            "cents: integer changed to string", "timestamp: removed required field",
+        ])
 
     def test_legacy_rules_match_golden_fixtures(self):
         self.assertEqual(verify(), {"cases": 8, "failures": []})
