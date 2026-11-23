@@ -1,0 +1,4 @@
+{"event_id":"match","amount_cents":1250,"currency":"USD"}
+{"event_id":"amount","amount_cents":501,"currency":"USD"}
+{"event_id":"currency","amount_cents":700,"currency":"EUR"}
+{"event_id":"missing_internal","amount_cents":900,"currency":"USD"}

@@ -1,0 +1,6 @@
+{"event_id":"match","amount_cents":1250,"currency":"USD"}
+{"event_id":"amount","amount_cents":500,"currency":"USD"}
+{"event_id":"currency","amount_cents":700,"currency":"USD"}
+{"event_id":"missing_processor","amount_cents":800,"currency":"USD"}
+{"event_id":"duplicate","amount_cents":100,"currency":"USD"}
+{"event_id":"duplicate","amount_cents":100,"currency":"USD"}

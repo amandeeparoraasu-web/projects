@@ -75,3 +75,9 @@ Open http://127.0.0.1:8080 and try both scenarios in each demo. The web app runs
 
 - [Durable transaction replay](event_replay/README.md) materializes an append-only event log into SQLite. It checkpoints consumed bytes in the same transaction as ledger updates and handles retries, partial records, and conflicting duplicates.
 - [Cost-sensitive model evaluation](model_evaluation/README.md) selects a score threshold on validation data, then reports precision, recall, and errors on an independent holdout and its segments.
+
+## Settlement engineering projects
+
+- [PySpark settlement reconciliation](spark_settlement/README.md) classifies discrepancies between two synthetic payment feeds and writes Parquet.
+- [Settlement regression suite](parity_suite/README.md) compares candidate output with an independent golden fixture and produces machine-readable differences.
+- [Settlement review agents](review_agents/README.md) turn differences into a review queue, with an optional local LLM draft for human review.
