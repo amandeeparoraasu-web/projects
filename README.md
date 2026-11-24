@@ -1,6 +1,33 @@
 # Engineering portfolio
 
-Three runnable demonstrations of financial data engineering and legacy modernization. The examples use synthetic transactions and original decision rules. They are portfolio demonstrations, separate from employer systems and published research implementations.
+Hands-on demonstrations of financial data engineering, model evaluation, and legacy modernization. The examples use synthetic data and are designed to run locally.
+
+## Start here
+
+For a browser walkthrough, open the [Engineering Lab](https://amandeeparora.com/projects/) or [Credit Card Lab](https://amandeeparora.com/projects/card-lab/). To run the command-line examples, install Python 3.10 or later and open a terminal:
+
+```sh
+git clone https://github.com/amandeeparoraasu-web/projects.git
+cd projects
+python3 -m unittest -v
+```
+
+## Project guide
+
+| Project | What you can try | Where to start |
+| --- | --- | --- |
+| Transaction stream | Replay out-of-order events and inspect totals, duplicates, and late arrivals. | [Run the sample](#quick-start-demos) |
+| Federated fraud model | Train across three simulated clients and compare holdout loss. | [Run the sample](#quick-start-demos) |
+| COBOL credit-rule parity | Check threshold boundaries and rule precedence against golden fixtures. | [Run the sample](#quick-start-demos) |
+| Ledger reconciliation | Find missing transactions and mismatched cent amounts across two CSV ledgers. | [Run the CSV comparison](#ledger-reconciliation) |
+| Schema compatibility | Check whether a schema change removes a field or changes a type. | [Run the schema check](#schema-compatibility) |
+| Settlement reconciliation API | Submit a batch, retrieve its SQLite-backed report, and retry it safely. | [API guide](settlement_service/README.md) |
+| Durable event replay | Resume an append-only log from a SQLite checkpoint and handle duplicate events. | [Replay guide](event_replay/README.md) |
+| Cost-sensitive model evaluation | Select a threshold on validation data and evaluate it on a separate holdout. | [Evaluation guide](model_evaluation/README.md) |
+| Engineering Lab | Switch scenarios and inspect the results of three browser demos. | [Local setup](#engineering-lab) |
+| Credit Card Lab | Search the glossary and try the interest and payment simulators. | [Live walkthrough](#live-demos) |
+
+## Quick-start demos
 
 | Project | What it demonstrates | Run from the repository root |
 | --- | --- | --- |
