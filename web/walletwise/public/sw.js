@@ -1,15 +1,17 @@
 const scope = new URL(self.registration.scope);
 const prefix = `walletwise:${scope.pathname}:`;
 const cacheName = `${prefix}__BUILD_HASH__`;
+// Cache the canonical directory URL. Some hosts redirect index.html.
 const assets = [
-  './index.html', './styles.css', './app.js', './icons.js', './catalog.js', './rewards.js',
+  './', './styles.css', './app.js', './icons.js', './catalog.js', './rewards.js',
   './storage.js', './merchants.js', './market.json', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png',
   './icons/apple-touch.png', './icons/maskable-512.png',
 ];
 const cachedAssets = new Set(assets.map(path => new URL(path, scope).href));
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(cacheName).then(cache =>
-    cache.addAll(assets.map(path => new Request(new URL(path, scope), { cache: 'reload' })))));
+    cache.addAll(assets.map(path => new Request(new URL(path, scope), { cache: 'reload' }))))
+    .then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
@@ -24,7 +26,7 @@ self.addEventListener('fetch', event => {
   if (request.mode === 'navigate') {
     event.respondWith((async () => {
       const cache = await caches.open(cacheName);
-      return (await cache.match(new URL('./index.html', scope))) ?? fetch(request);
+      return (await cache.match(new URL('./', scope))) ?? fetch(request);
     })());
   } else if (cachedAssets.has(request.url)) {
     event.respondWith((async () => {
