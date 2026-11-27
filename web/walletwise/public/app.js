@@ -1,5 +1,5 @@
 import { acceptedNetworks, catalog, categories, merchants, mergeMarket, verifiedDate } from './catalog.js';
-import { currentQuarter, recommendations } from './rewards.js';
+import { bestMarketCashBack, currentQuarter, recommendations } from './rewards.js';
 import { readPreference, readWallet, savePreference, saveWallet } from './storage.js';
 import { icon } from './icons.js';
 
@@ -69,10 +69,33 @@ function renderWallet() {
     </article>`).join('') || '<p class="empty-wallet">Add a card to see which one earns the most.</p>';
 }
 
+function renderMarket(amountValue) {
+  const market = bestMarketCashBack(category.value, amountValue ?? 100, merchant);
+  const result = $('#market-result');
+  if (!market) {
+    result.textContent = 'No eligible cash-back card in the catalog for this purchase.';
+    return;
+  }
+  const { card, value, effective } = market;
+  const bonus = card.memberBonus;
+  const membership = bonus?.category === category.value
+    ? `<p class="market-bonus"><strong>${number(bonus.rate)}% cash back</strong> with a ${escape(bonus.requirement)}${amountValue === null ? '' : ` · ${money(amountValue * bonus.rate / 100)} estimated`}.</p>`
+    : '';
+  result.innerHTML = `<article class="market-pick">
+    <div class="market-context">${escape(merchantLabel())}</div>
+    <h3>${escape(card.name)}</h3>
+    <p><strong class="market-rate">${number(effective)}%</strong> cash back${amountValue === null ? '' : ` · ${money(value)} estimated`}</p>
+    ${membership}
+    ${card.source ? `<a href="${escape(card.source)}" target="_blank" rel="noopener noreferrer">View card terms</a>` : ''}
+  </article>`;
+}
+
 function renderResults() {
   const target = $('#recommendation');
   const value = amount.valueAsNumber;
-  if (!amount.validity.valid || !Number.isFinite(value)) {
+  const valid = amount.validity.valid && Number.isFinite(value);
+  renderMarket(valid ? value : null);
+  if (!valid) {
     target.innerHTML = '<p class="panel empty-result">Enter a purchase amount from $0.01 to $1,000,000 in whole cents.</p>';
     return;
   }

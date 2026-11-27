@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { catalog, merchants } from '../public/catalog.js';
-import { currentQuarter, estimate, recommendations } from '../public/rewards.js';
+import { bestMarketCashBack, currentQuarter, estimate, recommendations } from '../public/rewards.js';
 
 const card = id => catalog.find(entry => entry.id === id);
 const merchant = name => merchants.find(entry => entry.name === name);
@@ -43,4 +43,13 @@ test('empty wallet, invalid inputs and ties do not show missed rewards', () => {
   assert.equal(recommendations([], 'dining', 100).best, null);
   assert.equal(recommendations([card('sapphire')], 'dining', NaN).best, null);
   assert.equal(recommendations([card('sapphire')], 'dining', 100).alternative, null);
+});
+
+test('market cash back works with an empty wallet and respects Walmart eligibility', () => {
+  const walmart = merchant('Walmart');
+  const winner = bestMarketCashBack(walmart.category, 125, walmart);
+  assert.equal(winner.card.id, 'onepay');
+  assert.equal(winner.value, 3.75);
+  assert.equal(winner.card.memberBonus.rate, 5);
+  assert.equal(estimate(winner.card, 'other', 100).value, 1.5);
 });

@@ -42,12 +42,18 @@
         </section>
         <section class="results" aria-labelledby="result-title"><h2 id="result-title">Your recommendation</h2><div id="recommendation" aria-live="polite"></div></section>
       </div>
+      <div class="sidebar">
+      <aside class="panel market" aria-labelledby="market-title">
+        <div class="section-heading"><span class="section-icon" data-icon="trend"></span><div><h2 id="market-title">Best cash back</h2><p>Top card in the catalog for this purchase.</p></div></div>
+        <div id="market-result" aria-live="polite"></div>
+      </aside>
       <aside class="panel wallet" aria-labelledby="wallet-title">
         <div class="section-heading"><span class="section-icon" data-icon="wallet"></span><div><h2 id="wallet-title">My wallet</h2><p id="wallet-count"></p></div></div>
         <div id="wallet-list"></div>
         <button id="add" class="button add-button" type="button"><span data-icon="plus"></span> Add a card</button>
         <div class="privacy"><span data-icon="lock"></span> Your wallet stays on this device.</div>
       </aside>
+      </div>
     </div>
     <footer><span id="catalog-date"></span><span>U.S. reward estimates. Merchant coding, eligibility and redemption value may vary.</span></footer>
   </main>

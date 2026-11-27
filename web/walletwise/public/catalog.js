@@ -2,7 +2,7 @@ export const categories = {
   dining: 'Dining', grocery: 'Groceries', gas: 'Gas', travel: 'Travel',
   wholesale: 'Wholesale clubs', drugstore: 'Drugstores', online: 'Online retail',
   streaming: 'Eligible streaming', transit: 'Transit', onlineGrocery: 'Online groceries',
-  entertainment: 'Entertainment', portal: 'Chase Travel', costcoGas: 'Costco gas', other: 'Other purchases',
+  entertainment: 'Entertainment', portal: 'Chase Travel', costcoGas: 'Costco gas', walmart: 'Walmart purchases', other: 'Other purchases',
 };
 
 export const merchants = [
@@ -11,7 +11,7 @@ export const merchants = [
   { name: 'Shell', category: 'gas', icon: 'gas', keywords: 'shell gas station fuel' },
   { name: 'Costco', category: 'wholesale', icon: 'store', keywords: 'costco warehouse club' },
   { name: 'Delta Air Lines', category: 'travel', icon: 'plane', keywords: 'delta airlines airfare flights' },
-  { name: 'Walmart', category: 'other', icon: 'bag', keywords: 'walmart supercenter superstore' },
+  { name: 'Walmart', category: 'walmart', icon: 'bag', keywords: 'walmart supercenter superstore' },
   { name: 'Costco Gas', category: 'costcoGas', icon: 'gas', keywords: 'costco gasoline fuel' },
   { name: 'Trader Joe’s', category: 'grocery', icon: 'basket', keywords: 'trader joes grocery supermarket' },
   { name: 'Starbucks', category: 'dining', icon: 'dining', keywords: 'coffee cafe' },
@@ -47,6 +47,10 @@ export const catalog = [
   { id: 'double', name: 'Citi Double Cash', issuer: 'Citi', network: 'Mastercard', color: 'mint',
     ...cash, base: 2, rates: {},
     source: 'https://www.citi.com/credit-cards/citi-double-cash-credit-card' },
+  { id: 'onepay', name: 'OnePay CashRewards Mastercard', issuer: 'OnePay', network: 'Mastercard', color: 'mint',
+    ...cash, base: 1.5, rates: { walmart: 3 }, annualFee: 0,
+    memberBonus: { category: 'walmart', rate: 5, requirement: 'linked Walmart+ membership' },
+    source: 'https://www.onepay.com/credit-card' },
   { id: 'costco', name: 'Costco Anywhere Visa', issuer: 'Citi', network: 'Visa', color: 'orange',
     ...cash, base: 1, rates: { gas: 4, costcoGas: 5, wholesale: 2, dining: 3, travel: 3 },
     groups: { gas: 'fuel', costcoGas: 'fuel' }, caps: { fuel: 7000 },

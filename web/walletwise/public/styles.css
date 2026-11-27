@@ -171,3 +171,12 @@ form label :is(input, select) { margin-top: 4px; }
   footer { flex-direction: column; }
 }
 @media (max-width: 350px) { .form-grid { grid-template-columns: 1fr; } }
+
+.sidebar { display: grid; gap: 16px; min-width: 0; }
+.market-pick { display: grid; gap: 7px; }
+.market-context, .market-pick p, .market-pick a { font-size: .875rem; line-height: 1.45; }
+.market-context, .market-pick p { color: var(--muted); }
+.market-pick h3 { font-size: 1.06rem; }
+.market-rate { font-size: 1.3rem; color: var(--accent); }
+.market-pick .market-bonus { padding: 8px 10px; background: var(--tint); border-radius: 8px; color: var(--text); }
+.market-pick a { justify-self: start; color: var(--accent); padding-block: 5px; }

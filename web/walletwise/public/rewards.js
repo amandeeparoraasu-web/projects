@@ -32,6 +32,12 @@ export function estimate(card, category, amount, merchant, date = new Date()) {
   return { card, units, value, rate: earned / amount, effective: value / amount * 100 };
 }
 
+export function bestMarketCashBack(category, amount, merchant, date = new Date()) {
+  return catalog.filter(card => card.unit === 'cash')
+    .map(card => estimate(card, category, amount, merchant, date)).filter(Boolean)
+    .sort((a, b) => b.value - a.value || a.card.name.localeCompare(b.card.name))[0] ?? null;
+}
+
 export function recommendations(wallet, category, amount, merchant, date = new Date()) {
   const rank = cards => cards.map(card => estimate(card, category, amount, merchant, date))
     .filter(Boolean).sort((a, b) => b.value - a.value || a.card.name.localeCompare(b.card.name));

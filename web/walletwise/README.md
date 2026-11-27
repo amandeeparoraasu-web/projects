@@ -1,6 +1,6 @@
 # WalletWise
 
-WalletWise compares credit card rewards for a specific U.S. purchase. Add cards from the issuer-checked catalog or enter a custom card, choose a merchant or purchase category, and enter the purchase amount. The app ranks active wallet cards by estimated dollar value and shows the additional reward from a higher-earning catalog card outside the wallet when available.
+WalletWise compares credit card rewards for a specific U.S. purchase. Add cards from the issuer-checked catalog or enter a custom card, choose a merchant or purchase category, and enter the purchase amount. The Best cash back panel compares eligible catalog cards even with an empty wallet and displays any applicable Walmart+ bonus. The app ranks active wallet cards by estimated dollar value and shows the additional reward from a higher-earning catalog card outside the wallet when available.
 
 ## Run locally
 
