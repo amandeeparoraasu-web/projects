@@ -1,0 +1,20 @@
+const paths = {
+  wallet: '<path d="M20 8V6a2 2 0 0 0-2-2H6a3 3 0 0 0 0 6h14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a3 3 0 0 1-3-3V7"/><path d="M22 14h-5"/><path d="M17 16h.01"/>',
+  spark: '<path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z"/>',
+  pin: '<path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
+  search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/>',
+  dining: '<path d="M4 3v5a3 3 0 0 0 6 0V3M7 3v18m12 0V3c-3 1-4 5-4 9h4"/>',
+  basket: '<path d="m7 10 4-6m6 6-4-6M3 10h18l-2 9H5zm6 3v3m6-3v3"/>',
+  gas: '<path d="M3 21h12M5 21V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v16M5 10h8m0 3h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0V9l-4-4m2 2v3h2"/>',
+  store: '<path d="M3 10 5 4h14l2 6v2a2 2 0 0 1-4 0 2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0 2 2 0 0 1-4 0zm2 4v6h14v-6m-9 6v-4h4v4"/>',
+  plane: '<path d="M17 21v-7l4 2v-3l-7-5V4a2 2 0 0 0-4 0v4l-7 5v3l4-2v7l5-3z"/>',
+  bag: '<path d="M5 8h14l2 13H3zm4 2V6a3 3 0 0 1 6 0v4"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  lock: '<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3m-4 5v2"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1 1m12 12 1 1M5 19l1-1M18 6l1-1"/>',
+  moon: '<path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10Z"/>',
+  edit: '<path d="m14 6 4 4M4 20l4-1L20 7l-4-4L4 15Z"/>',
+  trend: '<path d="m3 17 6-6 4 4 7-8m-5 0h5v5"/>',
+  check: '<path d="m5 12 4 4L19 6"/>',
+};
+export const icon = name => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] ?? paths.bag}</svg>`;

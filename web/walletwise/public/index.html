@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101714">
+  <meta name="description" content="Compare credit card rewards for your next purchase with WalletWise.">
+  <title>WalletWise | Optimal Credit Card Selector</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/png" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch.png">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top"><div class="shell top-inner">
+    <a class="brand" href="./"><span class="brand-icon" data-icon="wallet"></span><span>Wallet<span>Wise</span><small>OPTIMAL CREDIT CARD SELECTOR</small></span></a>
+    <div class="header-actions"><button class="button quiet" id="install" type="button" hidden>Install app</button><button class="icon-button" id="theme" type="button" aria-label="Switch color theme"></button></div>
+  </div></header>
+  <main class="shell" id="main">
+    <section class="hero" aria-labelledby="headline"><div class="hero-copy">
+      <div class="eyebrow"><span data-icon="spark"></span> REWARDS OPTIMIZER</div>
+      <h1 id="headline">Make every<br>swipe <em>count.</em></h1>
+      <p>Find the best card in your wallet for your next purchase and see how much more you could earn.</p>
+    </div><div class="hero-art" aria-hidden="true">
+      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+      <div class="art-card art-back"></div><div class="art-card art-front"><span class="chip"></span><span class="art-logo" data-icon="wallet"></span><span class="art-dots">•••• &nbsp; ••••</span><span class="art-circles"></span></div>
+      <span class="spark spark-one">✦</span><span class="spark spark-two">✧</span>
+    </div></section>
+    <div class="workspace">
+      <div class="primary">
+        <section class="panel purchase" aria-labelledby="purchase-title">
+          <div class="section-heading"><span class="section-icon" data-icon="pin"></span><div><h2 id="purchase-title">Where are you shopping?</h2><p>Choose a merchant or shop by category.</p></div></div>
+          <label for="search">Merchant search</label>
+          <div class="search-wrap"><div class="field search-field"><span data-icon="search"></span><input id="search" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="suggestions" autocomplete="off" placeholder="Search merchants or categories"></div><ul id="suggestions" role="listbox" hidden></ul></div>
+          <div id="quick" class="quick"></div>
+          <div class="purchase-fields">
+            <div><label for="category">Purchase category</label><select id="category"></select></div>
+            <div><label for="amount">Purchase amount</label><div class="field amount-field"><span>$</span><input id="amount" type="number" inputmode="decimal" min="0.01" max="1000000" step="0.01" value="100.00"></div></div>
+          </div>
+        </section>
+        <section class="results" aria-labelledby="result-title"><h2 id="result-title">Your recommendation</h2><div id="recommendation" aria-live="polite"></div></section>
+      </div>
+      <aside class="panel wallet" aria-labelledby="wallet-title">
+        <div class="section-heading"><span class="section-icon" data-icon="wallet"></span><div><h2 id="wallet-title">My wallet</h2><p id="wallet-count"></p></div></div>
+        <div id="wallet-list"></div>
+        <button id="add" class="button add-button" type="button"><span data-icon="plus"></span> Add a card</button>
+        <div class="privacy"><span data-icon="lock"></span> Your wallet stays on this device.</div>
+      </aside>
+    </div>
+    <footer><span id="catalog-date"></span><span>U.S. reward estimates. Merchant coding, eligibility and redemption value may vary.</span></footer>
+  </main>
+  <dialog id="editor" aria-labelledby="editor-title">
+    <form id="card-form">
+      <div class="dialog-head"><h2 id="editor-title">Add a card</h2><button class="icon-button" type="button" data-close aria-label="Close card editor">×</button></div>
+      <div id="editor-fields"></div>
+      <div class="dialog-actions"><button class="button danger" id="remove" type="button" hidden>Remove card</button><button class="button quiet" type="button" data-close>Cancel</button><button class="button solid" type="submit">Save card</button></div>
+    </form>
+  </dialog>
+  <div id="notice" class="notice" role="status" hidden></div>
+</body>
+</html>

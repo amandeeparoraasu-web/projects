@@ -1,0 +1,7 @@
+dist/
+node_modules/
+.vercel/
+.netlify/
+.DS_Store
+
+public/market.json.tmp

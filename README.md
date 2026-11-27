@@ -4,7 +4,7 @@ Hands-on demonstrations of financial data engineering, model evaluation, and leg
 
 ## Start here
 
-For a browser walkthrough, open the [Engineering Lab](https://amandeeparora.com/projects/), [Credit Card Lab](https://amandeeparora.com/projects/card-lab/), or the [CPA Audit Mock Exam Suite (CD)](https://aud-cd.amandeeparora.com/). To run the command-line examples, install Python 3.10 or later and open a terminal:
+For a browser walkthrough, open the [Engineering Lab](https://amandeeparora.com/projects/), [Credit Card Lab](https://amandeeparora.com/projects/card-lab/), [WalletWise](https://amandeeparora.com/projects/walletwise/), or the [CPA Audit Mock Exam Suite (CD)](https://aud-cd.amandeeparora.com/). To run the command-line examples, install Python 3.10 or later and open a terminal:
 
 ```sh
 git clone https://github.com/amandeeparoraasu-web/projects.git
@@ -27,6 +27,7 @@ python3 -m unittest -v
 | Engineering Lab | Switch scenarios and inspect the results of three browser demos. | [Local setup](#engineering-lab) |
 | Credit Card Lab | Search the glossary and try the interest and payment simulators. | [Live walkthrough](#live-demos) |
 | CPA Audit Mock Exam Suite (CD) | Take five timed AUD practice exams and review testlet pacing and answers. | [Local setup](web/aud-exam-cd/README.md) |
+| WalletWise | Compare credit card rewards by merchant and purchase amount. | [WalletWise setup](web/walletwise/README.md) |
 
 ## Quick-start demos
 
