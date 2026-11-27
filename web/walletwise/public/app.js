@@ -1,6 +1,7 @@
 import { acceptedNetworks, catalog, categories, merchants, mergeMarket, verifiedDate } from './catalog.js';
 import { bestMarketCashBack, currentQuarter, recommendations } from './rewards.js';
 import { readPreference, readWallet, savePreference, saveWallet } from './storage.js';
+import { normalizeMerchant } from './merchants.js';
 import { icon } from './icons.js';
 
 const $ = selector => document.querySelector(selector);
@@ -144,19 +145,33 @@ function selectMatch(item) {
   closeSuggestions();
   renderQuick();
   renderResults();
+  if (item.custom) {
+    category.focus();
+    notice('Choose the purchase category for this merchant.');
+  }
 }
 function updateSuggestions() {
-  const query = search.value.trim().toLowerCase();
+  const typed = search.value.trim().slice(0, 100);
+  const query = normalizeMerchant(typed);
   matches = [
     ...merchants.map(item => ({ merchant: item, label: item.name, category: item.category, keywords: item.keywords })),
     ...categoryOptions.map(([key, label]) => ({ label, category: key, keywords: key })),
-  ].filter(item => `${item.label} ${item.keywords}`.toLowerCase().includes(query))
-    .sort((a, b) => Number(b.label.toLowerCase().startsWith(query)) - Number(a.label.toLowerCase().startsWith(query)))
-    .slice(0, 8);
+  ].map(item => {
+    const name = normalizeMerchant(item.label);
+    const aliases = normalizeMerchant(item.keywords);
+    const score = name === query ? 4 : name.startsWith(query) ? 3
+      : name.includes(query) ? 2 : aliases.includes(query) ? 1 : 0;
+    return { ...item, score };
+  }).filter(item => item.score)
+    .sort((first, second) => second.score - first.score)
+    .slice(0, 7);
+  if (typed && !matches.some(item => item.merchant && item.score === 4)) {
+    matches.push({ merchant: { name: typed, custom: true }, label: typed, category: 'other', custom: true });
+  }
   matchIndex = -1;
   search.removeAttribute('aria-activedescendant');
   suggestions.innerHTML = matches.map((item, index) =>
-    `<li id="match-${index}" role="option" aria-selected="false" data-match="${index}"><strong>${escape(item.label)}</strong><span>${escape(item.merchant ? categories[item.category] : 'Category')}</span></li>`).join('')
+    `<li id="match-${index}" role="option" aria-selected="false" data-match="${index}"><strong>${escape(item.label)}</strong><span>${escape(item.custom ? 'Use unlisted merchant' : item.merchant ? categories[item.category] : 'Category')}</span></li>`).join('')
     || '<li class="no-match" role="presentation">No matches. Choose a purchase category below.</li>';
   suggestions.hidden = false;
   search.setAttribute('aria-expanded', 'true');
@@ -201,8 +216,10 @@ $('#quick').addEventListener('click', event => {
   selectMatch({ merchant: item, label: item.name, category: item.category });
 });
 category.addEventListener('change', () => {
-  merchant = null;
-  search.value = '';
+  if (!merchant?.custom) {
+    merchant = null;
+    search.value = '';
+  }
   renderQuick();
   renderResults();
 });

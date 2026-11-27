@@ -78,7 +78,7 @@ Cross-site iframes can restrict or partition browser storage. Install from the s
 ## Project layout
 
 - `public/index.html`, `styles.css`, `app.js`, and `icons.js` provide the interface.
-- `public/catalog.js` and `market.json` provide merchant and card data.
+- `public/catalog.js` and `market.json` provide card data. `public/merchants.js` contains the U.S. merchant directory and search aliases. Unlisted merchants can be entered with a user-selected category.
 - `public/rewards.js` calculates returns independently of the UI.
 - `public/storage.js` persists wallet profiles and the theme. A backend can replace this boundary later. The app stores card profiles without requesting account numbers.
 - `public/sw.js`, the manifest, and PNG icons support installation and offline use.

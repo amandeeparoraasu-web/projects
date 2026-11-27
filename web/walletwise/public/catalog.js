@@ -1,3 +1,5 @@
+import { merchantEntries } from './merchants.js';
+
 export const categories = {
   dining: 'Dining', grocery: 'Groceries', gas: 'Gas', travel: 'Travel',
   wholesale: 'Wholesale clubs', drugstore: 'Drugstores', online: 'Online retail',
@@ -5,20 +7,8 @@ export const categories = {
   entertainment: 'Entertainment', portal: 'Chase Travel', costcoGas: 'Costco gas', walmart: 'Walmart purchases', other: 'Other purchases',
 };
 
-export const merchants = [
-  { name: 'Restaurants', category: 'dining', icon: 'dining', keywords: 'food cafes coffee takeout' },
-  { name: 'Whole Foods', category: 'grocery', icon: 'basket', keywords: 'whole foods market supermarket groceries' },
-  { name: 'Shell', category: 'gas', icon: 'gas', keywords: 'shell gas station fuel' },
-  { name: 'Costco', category: 'wholesale', icon: 'store', keywords: 'costco warehouse club' },
-  { name: 'Delta Air Lines', category: 'travel', icon: 'plane', keywords: 'delta airlines airfare flights' },
-  { name: 'Walmart', category: 'walmart', icon: 'bag', keywords: 'walmart supercenter superstore' },
-  { name: 'Costco Gas', category: 'costcoGas', icon: 'gas', keywords: 'costco gasoline fuel' },
-  { name: 'Trader Joe’s', category: 'grocery', icon: 'basket', keywords: 'trader joes grocery supermarket' },
-  { name: 'Starbucks', category: 'dining', icon: 'dining', keywords: 'coffee cafe' },
-  { name: 'CVS', category: 'drugstore', icon: 'store', keywords: 'pharmacy' },
-  { name: 'Chase Travel', category: 'portal', icon: 'plane', keywords: 'chase booking portal' },
-  { name: 'Amazon', category: 'online', icon: 'bag', keywords: 'amazon online shopping retail' },
-];
+export const merchants = merchantEntries.map(([name, category, icon, keywords]) =>
+  ({ name, category, icon, keywords }));
 
 export const acceptedNetworks = merchant =>
   ['Costco', 'Costco Gas'].includes(merchant?.name) ? ['Visa'] : null;

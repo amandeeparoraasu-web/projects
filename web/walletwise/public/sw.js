@@ -3,7 +3,7 @@ const prefix = `walletwise:${scope.pathname}:`;
 const cacheName = `${prefix}__BUILD_HASH__`;
 const assets = [
   './index.html', './styles.css', './app.js', './icons.js', './catalog.js', './rewards.js',
-  './storage.js', './market.json', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png',
+  './storage.js', './merchants.js', './market.json', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png',
   './icons/apple-touch.png', './icons/maskable-512.png',
 ];
 const cachedAssets = new Set(assets.map(path => new URL(path, scope).href));
